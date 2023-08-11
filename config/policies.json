@@ -1,0 +1,28 @@
+{
+  "policies": [
+    {
+      "handler": {
+        "export": "FormDataToJsonInboundPolicy",
+        "module": "$import(@zuplo/runtime)",
+        "options": {
+          "badRequestIfNotFormData": true
+        }
+      },
+      "name": "formdata-to-json-inbound",
+      "policyType": "formdata-to-json-inbound"
+    },
+    {
+      "handler": {
+        "export": "Auth0JwtInboundPolicy",
+        "module": "$import(@zuplo/runtime)",
+        "options": {
+          "allowUnauthenticatedRequests": false,
+          "auth0Domain": "$env(AUTH0_DOMAIN)",
+          "audience": "$env(AUTH0_AUDIENCE)"
+        }
+      },
+      "name": "auth0-jwt-auth-inbound",
+      "policyType": "auth0-jwt-auth-inbound"
+    }
+  ]
+}
